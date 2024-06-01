@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chart</title>
+  <title>Task Chart</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -14,9 +14,11 @@
       var vars = query.split("&");
       for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split("=");
-        if (pair[0] === variable) { return pair[1]; }
+        if (pair[0] === variable) {
+          return decodeURIComponent(pair[1]);
+        }
       }
-      return(false);
+      return 0;
     }
 
     var completedTasks = getQueryVariable("completedTasks");
