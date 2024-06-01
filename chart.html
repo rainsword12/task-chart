@@ -5,10 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Chart</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #taskChart {
+      max-width: 80%;
+      max-height: 80%;
+    }
+    #debug {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: white;
+      color: black;
+      padding: 10px;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
-  <canvas id="taskChart" width="400" height="400"></canvas>
-  <div id="debug"></div>
+  <canvas id="taskChart"></canvas>
+  <div id="debug"></div> <!-- 用于显示调试信息 -->
   <script>
     function getQueryVariable(variable) {
       var query = window.location.search.substring(1);
@@ -27,6 +50,7 @@
 
     // 调试信息
     document.getElementById('debug').innerHTML = `Completed Tasks: ${completedTasks}, Incomplete Tasks: ${incompleteTasks}`;
+    console.log(`Completed Tasks: ${completedTasks}, Incomplete Tasks: ${incompleteTasks}`);
 
     var ctx = document.getElementById('taskChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -48,7 +72,7 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: true
       }
     });
   </script>
