@@ -58,7 +58,7 @@
       data: {
         labels: ['Work Time', 'Rest Time'],
         datasets: [{
-          data: [workTime, restTime],
+          data: [parseFloat(workTime), parseFloat(restTime)],  // 转换为浮点数
           backgroundColor: [
             'rgba(54, 162, 235, 0.2)',
             'rgba(255, 99, 132, 0.2)'
