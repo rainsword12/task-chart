@@ -52,29 +52,34 @@
     document.getElementById('debug').innerHTML = `Work Time: ${workTime}, Rest Time: ${restTime}`;
     console.log(`Work Time: ${workTime}, Rest Time: ${restTime}`);
 
-    var ctx = document.getElementById('taskChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: ['Work Time', 'Rest Time'],
-        datasets: [{
-          data: [parseFloat(workTime), parseFloat(restTime)],  // 转换为浮点数
-          backgroundColor: [
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)'
-          ],
-          borderColor: [
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 99, 132, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    });
+    if (isNaN(workTime) || isNaN(restTime)) {
+      console.error("Invalid data received");
+      document.getElementById('debug').innerHTML += "<br>Invalid data received";
+    } else {
+      var ctx = document.getElementById('taskChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Work Time', 'Rest Time'],
+          datasets: [{
+            data: [parseFloat(workTime), parseFloat(restTime)],  // 转换为浮点数
+            backgroundColor: [
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+    }
   </script>
 </body>
 </html>
