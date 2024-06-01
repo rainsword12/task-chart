@@ -45,20 +45,20 @@
       return 0;
     }
 
-    var completedTasks = getQueryVariable("completedTasks");
-    var incompleteTasks = getQueryVariable("incompleteTasks");
+    var workTime = getQueryVariable("workTime");
+    var restTime = getQueryVariable("restTime");
 
     // 调试信息
-    document.getElementById('debug').innerHTML = `Completed Tasks: ${completedTasks}, Incomplete Tasks: ${incompleteTasks}`;
-    console.log(`Completed Tasks: ${completedTasks}, Incomplete Tasks: ${incompleteTasks}`);
+    document.getElementById('debug').innerHTML = `Work Time: ${workTime}, Rest Time: ${restTime}`;
+    console.log(`Work Time: ${workTime}, Rest Time: ${restTime}`);
 
     var ctx = document.getElementById('taskChart').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Completed', 'Incomplete'],
+        labels: ['Work Time', 'Rest Time'],
         datasets: [{
-          data: [completedTasks, incompleteTasks],
+          data: [workTime, restTime],
           backgroundColor: [
             'rgba(54, 162, 235, 0.2)',
             'rgba(255, 99, 132, 0.2)'
@@ -72,7 +72,7 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true
+        maintainAspectRatio: false
       }
     });
   </script>
