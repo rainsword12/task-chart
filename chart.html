@@ -8,6 +8,7 @@
 </head>
 <body>
   <canvas id="taskChart" width="400" height="400"></canvas>
+  <div id="debug"></div>
   <script>
     function getQueryVariable(variable) {
       var query = window.location.search.substring(1);
@@ -23,6 +24,9 @@
 
     var completedTasks = getQueryVariable("completedTasks");
     var incompleteTasks = getQueryVariable("incompleteTasks");
+
+    // 调试信息
+    document.getElementById('debug').innerHTML = `Completed Tasks: ${completedTasks}, Incomplete Tasks: ${incompleteTasks}`;
 
     var ctx = document.getElementById('taskChart').getContext('2d');
     var myChart = new Chart(ctx, {
